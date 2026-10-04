@@ -34,7 +34,6 @@
     <style>
         body { font-family: 'Inter', sans-serif; background-color: #F4F6F7; color: #0D1425; }
 
-        /* Animated gradient hero */
         .hero-bg {
             background: linear-gradient(-45deg, #0D1425, #154982, #0f2a6b, #0D1425);
             background-size: 400% 400%;
@@ -46,22 +45,18 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* Subtle pulse on the date badge */
         @keyframes pulse-badge {
             0%, 100% { box-shadow: 0 0 0 0 rgba(47,107,232,0.4); }
             50%       { box-shadow: 0 0 0 10px rgba(47,107,232,0); }
         }
         .badge-pulse { animation: pulse-badge 2.5s infinite; }
 
-
-        /* Form iframe container */
         .form-shell {
             border-radius: 20px;
             overflow: hidden;
             box-shadow: 0 25px 60px -15px rgba(13,20,37,0.18);
         }
 
-        /* What you'll learn cards */
         .learn-card {
             background: white;
             border: 1px solid #e5e7eb;
@@ -121,19 +116,17 @@
 
 <!-- ── Hero ───────────────────────────────────────────────────────── -->
 <section class="hero-bg text-white py-20 md:py-28 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-    <!-- Subtle decorative rings -->
     <div class="absolute -top-24 -right-24 w-96 h-96 rounded-full border border-white/5 pointer-events-none"></div>
     <div class="absolute -bottom-32 -left-16 w-72 h-72 rounded-full border border-white/5 pointer-events-none"></div>
 
     <div class="max-w-4xl mx-auto relative z-10">
-        <!-- Live / event badge -->
         <div class="flex flex-wrap items-center gap-3 mb-6">
             <span class="badge-pulse inline-flex items-center gap-2 bg-[#2F6BE8] text-white text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full">
                 <span class="w-2 h-2 rounded-full bg-white animate-ping"></span>
                 Free Live Webinar
             </span>
             <span class="inline-flex items-center gap-2 bg-white/10 border border-white/20 text-white text-xs font-semibold px-4 py-1.5 rounded-full">
-                <i class="fas fa-calendar-alt text-[#72AEF4]"></i> October 31, 2026
+                <i class="fas fa-calendar-alt text-[#72AEF4]"></i> October 31, 2023
             </span>
             <span class="inline-flex items-center gap-2 bg-white/10 border border-white/20 text-white text-xs font-semibold px-4 py-1.5 rounded-full">
                 <i class="fas fa-clock text-[#72AEF4]"></i> 12 Noon EST
@@ -144,9 +137,7 @@
         </div>
 
         <h1 class="text-4xl md:text-6xl font-extrabold leading-tight tracking-tight mb-6" style="font-family:'Montserrat',sans-serif;">
-            How to Do a High-Impact<br>
-            Study Using the<br>
-            <span class="text-[#72AEF4]">NIH Library</span>
+            How to Do a High-Impact Study Using the <span class="text-[#72AEF4]">NIH Library</span>
         </h1>
         <p class="text-lg md:text-xl text-gray-300 leading-relaxed mb-8 max-w-2xl">
             A free live session by Research Junction Institute. Learn key skills for conducting and contributing to high-quality reviews and meta-analyses in medical research.
@@ -180,45 +171,45 @@
         <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <div class="learn-card">
                 <div class="w-11 h-11 rounded-xl bg-[#2F6BE8]/10 flex items-center justify-center mb-4">
-                    <i class="fas fa-book-medical text-[#2F6BE8] text-lg"></i>
+                    <i class="fas fa-circle-question text-[#2F6BE8] text-lg"></i>
                 </div>
-                <h3 class="font-bold text-[#0D1425] mb-2">Navigating the NIH Library</h3>
-                <p class="text-gray-500 text-sm leading-relaxed">Get hands-on orientation to the NIH Library's databases and collections, and how they differ from PubMed or Google Scholar for serious evidence work.</p>
+                <h3 class="font-bold text-[#0D1425] mb-2">Framing a Review Question</h3>
+                <p class="text-gray-500 text-sm leading-relaxed"></p>
             </div>
             <div class="learn-card">
                 <div class="w-11 h-11 rounded-xl bg-[#2F6BE8]/10 flex items-center justify-center mb-4">
                     <i class="fas fa-magnifying-glass text-[#2F6BE8] text-lg"></i>
                 </div>
-                <h3 class="font-bold text-[#0D1425] mb-2">Building a High-Yield Search</h3>
-                <p class="text-gray-500 text-sm leading-relaxed">Learn how to construct a thorough, reproducible search strategy using NIH Library resources so you don't miss the studies that matter.</p>
+                <h3 class="font-bold text-[#0D1425] mb-2"></h3>
+                <p class="text-gray-500 text-sm leading-relaxed"></p>
             </div>
             <div class="learn-card">
                 <div class="w-11 h-11 rounded-xl bg-[#2F6BE8]/10 flex items-center justify-center mb-4">
                     <i class="fas fa-scale-balanced text-[#2F6BE8] text-lg"></i>
                 </div>
-                <h3 class="font-bold text-[#0D1425] mb-2">Judging Study Quality</h3>
-                <p class="text-gray-500 text-sm leading-relaxed">Understand how to screen and appraise the evidence you find, so your study rests on sources you can actually trust.</p>
+                <h3 class="font-bold text-[#0D1425] mb-2"></h3>
+                <p class="text-gray-500 text-sm leading-relaxed"></p>
             </div>
             <div class="learn-card">
                 <div class="w-11 h-11 rounded-xl bg-[#2F6BE8]/10 flex items-center justify-center mb-4">
                     <i class="fas fa-chart-line text-[#2F6BE8] text-lg"></i>
                 </div>
-                <h3 class="font-bold text-[#0D1425] mb-2">Designing for High Impact</h3>
-                <p class="text-gray-500 text-sm leading-relaxed">See what separates a high-impact study from an average one, from framing the question to choosing a design journals want to publish.</p>
+                <h3 class="font-bold text-[#0D1425] mb-2"></h3>
+                <p class="text-gray-500 text-sm leading-relaxed"></p>
             </div>
             <div class="learn-card">
                 <div class="w-11 h-11 rounded-xl bg-[#2F6BE8]/10 flex items-center justify-center mb-4">
                     <i class="fas fa-file-circle-check text-[#2F6BE8] text-lg"></i>
                 </div>
-                <h3 class="font-bold text-[#0D1425] mb-2">Citation &amp; Reference Management</h3>
-                <p class="text-gray-500 text-sm leading-relaxed">Learn practical workflows for organizing sources and citations pulled from the NIH Library as your study comes together.</p>
+                <h3 class="font-bold text-[#0D1425] mb-2"></h3>
+                <p class="text-gray-500 text-sm leading-relaxed"></p>
             </div>
             <div class="learn-card">
                 <div class="w-11 h-11 rounded-xl bg-[#2F6BE8]/10 flex items-center justify-center mb-4">
                     <i class="fas fa-people-group text-[#2F6BE8] text-lg"></i>
                 </div>
-                <h3 class="font-bold text-[#0D1425] mb-2">Live Q&amp;A with Experts</h3>
-                <p class="text-gray-500 text-sm leading-relaxed">Bring your own study ideas and get direct, real-time feedback from RJI's research team during the dedicated live Q&amp;A portion.</p>
+                <h3 class="font-bold text-[#0D1425] mb-2"></h3>
+                <p class="text-gray-500 text-sm leading-relaxed"></p>
             </div>
         </div>
     </div>
@@ -270,7 +261,7 @@
                 </div>
                 <div>
                     <p class="text-white font-bold text-sm" style="font-family:'Montserrat',sans-serif;">Research Junction Institute</p>
-                    <p class="text-[#72AEF4] text-xs">Webinar Registration — October 31, 2026</p>
+                    <p class="text-[#72AEF4] text-xs">Webinar Registration — October 31, 2023</p>
                 </div>
             </div>
             <iframe

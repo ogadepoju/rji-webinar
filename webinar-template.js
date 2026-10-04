@@ -154,9 +154,9 @@ function generateWebinarHtml(data) {
 <nav class="fixed top-0 w-full z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 transition-all duration-300">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center h-20">
-            <a href="index.html" class="flex items-center gap-3 cursor-pointer">
+            <a href="https://researchjunction.org/" class="flex items-center gap-3 cursor-pointer">
                 <div class="w-10 h-10 rounded-full border-2 border-[#2F6BE8] flex items-center justify-center bg-[#0D1425] overflow-hidden shrink-0">
-                    <img src="logo.png" class="w-6 h-6 object-contain">
+                    <img src="https://researchjunction.org/logo.png" class="w-6 h-6 object-contain">
                 </div>
                 <div class="flex flex-col">
                     <span class="font-bold text-lg leading-tight text-[#0D1425] tracking-tight" style="font-family:'Montserrat',sans-serif;">Research Junction</span>
@@ -164,14 +164,14 @@ function generateWebinarHtml(data) {
                 </div>
             </a>
             <div class="hidden md:flex space-x-8 items-center text-sm">
-                <a href="index.html" class="text-gray-600 hover:text-[#2F6BE8] transition">Home</a>
-                <a href="about.html" class="text-gray-600 hover:text-[#2F6BE8] transition">About</a>
-                <a href="programmes_page.html" class="text-gray-600 hover:text-[#2F6BE8] transition">Programmes</a>
-                <a href="partnership_page.html" class="text-gray-600 hover:text-[#2F6BE8] transition">Partners</a>
-                <a href="pulse.html" class="text-gray-600 hover:text-[#2F6BE8] transition">The Pulse</a>
+                <a href="https://researchjunction.org/" class="text-gray-600 hover:text-[#2F6BE8] transition">Home</a>
+                <a href="https://researchjunction.org/about.html" class="text-gray-600 hover:text-[#2F6BE8] transition">About</a>
+                <a href="https://researchjunction.org/programmes_page.html" class="text-gray-600 hover:text-[#2F6BE8] transition">Programmes</a>
+                <a href="https://researchjunction.org/partnership_page.html" class="text-gray-600 hover:text-[#2F6BE8] transition">Partners</a>
+                <a href="https://researchjunction.org/pulse.html" class="text-gray-600 hover:text-[#2F6BE8] transition">The Pulse</a>
             </div>
             <div class="hidden md:flex">
-                <a href="donate_page.html" class="bg-[#2F6BE8] hover:bg-[#154982] text-white font-bold text-sm px-6 py-2.5 rounded-full transition-colors shadow-lg">Donate</a>
+                <a href="https://researchjunction.org/donate_page.html" class="bg-[#2F6BE8] hover:bg-[#154982] text-white font-bold text-sm px-6 py-2.5 rounded-full transition-colors shadow-lg">Donate</a>
             </div>
             <div class="md:hidden flex items-center">
                 <button class="text-[#0D1425] hover:text-[#2F6BE8] focus:outline-none p-2" onclick="document.getElementById('mobileMenu').classList.toggle('hidden')">
@@ -182,12 +182,12 @@ function generateWebinarHtml(data) {
     </div>
     <div id="mobileMenu" class="hidden md:hidden bg-white border-b border-gray-200 shadow-lg absolute w-full">
         <div class="px-4 pt-2 pb-6 space-y-2 flex flex-col text-sm">
-            <a href="index.html" class="text-gray-700 hover:bg-gray-50 block px-3 py-2 rounded-md font-medium transition">Home</a>
-            <a href="about.html" class="text-gray-700 hover:bg-gray-50 block px-3 py-2 rounded-md font-medium transition">About</a>
-            <a href="programmes_page.html" class="text-gray-700 hover:bg-gray-50 block px-3 py-2 rounded-md font-medium transition">Programmes</a>
-            <a href="partnership_page.html" class="text-gray-700 hover:bg-gray-50 block px-3 py-2 rounded-md font-medium transition">Partners</a>
-            <a href="pulse.html" class="text-gray-700 hover:bg-gray-50 block px-3 py-2 rounded-md font-medium transition">The Pulse</a>
-            <a href="donate_page.html" class="text-center block w-full mt-3 bg-[#2F6BE8] text-white px-3 py-3 rounded-md font-bold transition">Donate</a>
+            <a href="https://researchjunction.org/" class="text-gray-700 hover:bg-gray-50 block px-3 py-2 rounded-md font-medium transition">Home</a>
+            <a href="https://researchjunction.org/about.html" class="text-gray-700 hover:bg-gray-50 block px-3 py-2 rounded-md font-medium transition">About</a>
+            <a href="https://researchjunction.org/programmes_page.html" class="text-gray-700 hover:bg-gray-50 block px-3 py-2 rounded-md font-medium transition">Programmes</a>
+            <a href="https://researchjunction.org/partnership_page.html" class="text-gray-700 hover:bg-gray-50 block px-3 py-2 rounded-md font-medium transition">Partners</a>
+            <a href="https://researchjunction.org/pulse.html" class="text-gray-700 hover:bg-gray-50 block px-3 py-2 rounded-md font-medium transition">The Pulse</a>
+            <a href="https://researchjunction.org/donate_page.html" class="text-center block w-full mt-3 bg-[#2F6BE8] text-white px-3 py-3 rounded-md font-bold transition">Donate</a>
         </div>
     </div>
 </nav>
@@ -294,7 +294,7 @@ ${cardsHtml}
         <div class="form-shell bg-white">
             <div class="bg-[#0D1425] px-6 py-4 flex items-center gap-3">
                 <div class="w-8 h-8 rounded-full border border-[#2F6BE8] flex items-center justify-center bg-[#0D1425] overflow-hidden shrink-0">
-                    <img src="logo.png" class="w-5 h-5 object-contain">
+                    <img src="https://researchjunction.org/logo.png" class="w-5 h-5 object-contain">
                 </div>
                 <div>
                     <p class="text-white font-bold text-sm" style="font-family:'Montserrat',sans-serif;">Research Junction Institute</p>
@@ -327,7 +327,7 @@ ${cardsHtml}
             <div class="lg:col-span-1">
                 <div class="flex items-center gap-3 mb-6">
                     <div class="w-8 h-8 rounded-full border border-[#2F6BE8] flex items-center justify-center bg-[#0D1425] shrink-0 overflow-hidden">
-                        <img src="logo.png" class="w-5 h-5 object-contain">
+                        <img src="https://researchjunction.org/logo.png" class="w-5 h-5 object-contain">
                     </div>
                     <span class="font-bold text-lg tracking-tight">Research Junction</span>
                 </div>
@@ -344,18 +344,18 @@ ${cardsHtml}
             <div>
                 <h5 class="font-bold text-sm uppercase tracking-widest text-[#2F6BE8] mb-6">Organisation</h5>
                 <ul class="space-y-3 text-gray-400 text-sm">
-                    <li><a href="index.html" class="hover:text-white transition">Home</a></li>
-                    <li><a href="about.html" class="hover:text-white transition">About</a></li>
-                    <li><a href="programmes_page.html" class="hover:text-white transition">Programmes</a></li>
-                    <li><a href="partnership_page.html" class="hover:text-white transition">Partners</a></li>
+                    <li><a href="https://researchjunction.org/" class="hover:text-white transition">Home</a></li>
+                    <li><a href="https://researchjunction.org/about.html" class="hover:text-white transition">About</a></li>
+                    <li><a href="https://researchjunction.org/programmes_page.html" class="hover:text-white transition">Programmes</a></li>
+                    <li><a href="https://researchjunction.org/partnership_page.html" class="hover:text-white transition">Partners</a></li>
                 </ul>
             </div>
             <div>
                 <h5 class="font-bold text-sm uppercase tracking-widest text-[#2F6BE8] mb-6">Community</h5>
                 <ul class="space-y-3 text-gray-400 text-sm">
-                    <li><a href="pulse.html" class="hover:text-white transition">The Pulse</a></li>
-                    <li><a href="programmes_page.html" class="hover:text-white transition">Become a Junction Fellow</a></li>
-                    <li><a href="donate_page.html" class="hover:text-white transition">Support the Mission</a></li>
+                    <li><a href="https://researchjunction.org/pulse.html" class="hover:text-white transition">The Pulse</a></li>
+                    <li><a href="https://researchjunction.org/programmes_page.html" class="hover:text-white transition">Become a Junction Fellow</a></li>
+                    <li><a href="https://researchjunction.org/donate_page.html" class="hover:text-white transition">Support the Mission</a></li>
                 </ul>
             </div>
             <div>
@@ -369,10 +369,10 @@ ${cardsHtml}
             <div>
                 <h5 class="font-bold text-sm uppercase tracking-widest text-[#2F6BE8] mb-6">Legal</h5>
                 <ul class="space-y-3 text-gray-400 text-sm">
-                    <li><a href="privacy-policy.html" class="hover:text-white transition">Privacy Policy</a></li>
-                    <li><a href="terms.html" class="hover:text-white transition">Terms &amp; Conditions</a></li>
-                    <li><a href="authorship-policy.html" class="hover:text-white transition">Authorship Policy</a></li>
-                    <li><a href="faq.html" class="hover:text-white transition">FAQ</a></li>
+                    <li><a href="https://researchjunction.org/privacy-policy.html" class="hover:text-white transition">Privacy Policy</a></li>
+                    <li><a href="https://researchjunction.org/terms.html" class="hover:text-white transition">Terms &amp; Conditions</a></li>
+                    <li><a href="https://researchjunction.org/authorship-policy.html" class="hover:text-white transition">Authorship Policy</a></li>
+                    <li><a href="https://researchjunction.org/faq.html" class="hover:text-white transition">FAQ</a></li>
                     <li><span class="text-[#2F6BE8] font-medium mt-2 block">Registered Non-Profit</span></li>
                 </ul>
             </div>

@@ -122,6 +122,13 @@
         Publish — Make This the Live Page
       </button>
       <p id="publishStatus" class="text-sm text-center"></p>
+
+      <a id="stagingLink" href="/" target="_blank" rel="noopener" class="hidden items-center justify-center gap-2 w-full border border-[#2F6BE8] text-[#2F6BE8] hover:bg-[#2F6BE8]/5 font-semibold py-3 rounded-xl transition-all">
+        <i class="fas fa-arrow-up-right-from-square"></i> View Live Page — Check Before Trusting researchjunction.org/webinar
+      </a>
+      <p class="text-xs text-gray-400 text-center">
+        Opens this tool's own deployed URL directly — the fastest way to confirm a publish actually went out, a step or two before checking <code>researchjunction.org/webinar</code> itself (that one depends on your main site's redirect too).
+      </p>
     </div>
 
     <!-- ── Right: live preview ────────────────────────────────── -->
@@ -304,10 +311,15 @@ document.getElementById('publishBtn').addEventListener('click', async () => {
       const errText = await res.text();
       throw new Error(errText);
     }
-    statusEl.textContent = 'Published — the live page is updating now.';
+    statusEl.textContent = 'Published — redeploying now, usually ready within a minute.';
     statusEl.className = 'text-sm text-center text-green-600 font-semibold';
     document.getElementById('statusBadge').textContent = 'Published ' + new Date().toLocaleString();
     document.getElementById('statusBadge').className = 'text-xs font-semibold px-3 py-1.5 rounded-full bg-green-100 text-green-700';
+
+    const stagingLink = document.getElementById('stagingLink');
+    stagingLink.href = '/?checked=' + Date.now(); // cache-bust so you don't see a stale cached copy
+    stagingLink.classList.remove('hidden');
+    stagingLink.classList.add('flex');
   } catch (err) {
     statusEl.textContent = 'Publish failed: ' + err.message;
     statusEl.className = 'text-sm text-center text-red-500';

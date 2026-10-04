@@ -1,0 +1,12 @@
+# Satellite site for the Research Junction Institute webinar page.
+# Deploys automatically on every push once this repo is connected to
+# Netlify (Site settings -> Build & deploy -> Link repository).
+
+[build]
+  functions = "netlify/functions"
+  publish = "."
+
+[[headers]]
+  for = "/webinar-admin.html"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"

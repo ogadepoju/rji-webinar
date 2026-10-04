@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Webinar Updater | Research Junction Institute</title>
+<meta name="robots" content="noindex, nofollow">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="webinar-template.js"></script>
+<style>
+  body { font-family: 'Inter', sans-serif; }
+  .field-label { font-size: 0.8rem; font-weight: 600; color: #374151; margin-bottom: 0.25rem; display: block; }
+  .field-input { width: 100%; border: 1px solid #d1d5db; border-radius: 8px; padding: 0.55rem 0.75rem; font-size: 0.9rem; }
+  .field-input:focus { outline: 2px solid #2F6BE8; border-color: transparent; }
+  .card-row { border: 1px solid #e5e7eb; border-radius: 10px; padding: 0.75rem; background: #fafafa; }
+</style>
+</head>
+<body class="bg-[#F4F6F7] text-[#0D1425]">
+
+<!-- Passphrase gate -->
+<div id="gate" class="fixed inset-0 bg-[#0D1425] flex items-center justify-center z-50">
+  <div class="bg-white rounded-2xl p-8 max-w-sm w-full mx-4 text-center">
+    <p class="font-bold text-lg mb-1" style="font-family:'Montserrat',sans-serif;">Webinar Updater</p>
+    <p class="text-gray-500 text-sm mb-4">Enter the access passphrase to continue.</p>
+    <input id="passInput" type="password" class="field-input mb-3" placeholder="Passphrase">
+    <button id="passSubmit" class="w-full bg-[#2F6BE8] hover:bg-[#154982] text-white font-bold py-2.5 rounded-lg transition">Continue</button>
+    <p id="passError" class="text-red-500 text-xs mt-2 hidden">That didn't work — try again.</p>
+  </div>
+</div>
+
+<div id="app" class="hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+
+  <div class="flex items-center justify-between mb-8">
+    <div>
+      <h1 class="text-2xl font-extrabold" style="font-family:'Montserrat',sans-serif;">Webinar Updater</h1>
+      <p class="text-gray-500 text-sm">Upload the new flyer, check the details, and publish — the live page updates automatically.</p>
+    </div>
+    <span id="statusBadge" class="text-xs font-semibold px-3 py-1.5 rounded-full bg-gray-100 text-gray-500">Not published yet</span>
+  </div>
+
+  <div class="grid lg:grid-cols-2 gap-8">
+
+    <!-- ── Left: form ─────────────────────────────────────────── -->
+    <div class="space-y-6">
+
+      <!-- Flyer upload -->
+      <div class="bg-white border border-gray-200 rounded-2xl p-5">
+        <label class="field-label">1. Upload the new flyer (optional)</label>
+        <input id="flyerInput" type="file" accept="image/*" class="field-input">
+        <p id="extractStatus" class="text-xs text-gray-400 mt-2">Drop in a flyer image and the fields below will be filled in automatically. Always double-check them before publishing — flyer text can be misread.</p>
+      </div>
+
+      <!-- Core details -->
+      <div class="bg-white border border-gray-200 rounded-2xl p-5 space-y-4">
+        <label class="field-label">2. Session details</label>
+
+        <div>
+          <label class="field-label">Full title (plain text)</label>
+          <input id="f_title" class="field-input" placeholder="How to Do a High-Impact Study Using the NIH Library">
+        </div>
+
+        <div>
+          <label class="field-label">Highlighted portion of the title</label>
+          <input id="f_highlight" class="field-input" placeholder="NIH Library">
+          <p class="text-xs text-gray-400 mt-1">Must be an exact substring of the title above — it renders in light blue on the page.</p>
+        </div>
+
+        <div>
+          <label class="field-label">Subtitle (one short sentence)</label>
+          <textarea id="f_subtitle" rows="2" class="field-input" placeholder="Learn key skills for conducting and contributing to high-quality reviews and meta-analyses in medical research."></textarea>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="field-label">Date (with year)</label>
+            <input id="f_dateDisplay" class="field-input" placeholder="October 31, 2026">
+          </div>
+          <div>
+            <label class="field-label">Date (short)</label>
+            <input id="f_dateShort" class="field-input" placeholder="October 31">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="field-label">Time</label>
+            <input id="f_timeDisplay" class="field-input" placeholder="12 Noon EST">
+          </div>
+          <div>
+            <label class="field-label">Platform</label>
+            <input id="f_platformDisplay" class="field-input" placeholder="Virtual &amp;bull; Google Meet">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="field-label">Speaker name &amp; credentials</label>
+            <input id="f_speakerName" class="field-input" placeholder="Sandra Bakare, MD, MBA">
+          </div>
+          <div>
+            <label class="field-label">Speaker title</label>
+            <input id="f_speakerTitle" class="field-input" placeholder="Lead Investigator, Research Junction Institute">
+          </div>
+        </div>
+
+        <div>
+          <label class="field-label">Registration form URL (Google Form embed link)</label>
+          <input id="f_formUrl" class="field-input" placeholder="https://docs.google.com/forms/d/e/.../viewform?embedded=true">
+        </div>
+      </div>
+
+      <!-- Cards -->
+      <div class="bg-white border border-gray-200 rounded-2xl p-5">
+        <label class="field-label mb-3">3. "What You'll Walk Away With" — 6 cards</label>
+        <div id="cardsContainer" class="space-y-3"></div>
+        <p class="text-xs text-gray-400 mt-2">Icon names are <a href="https://fontawesome.com/search?o=r&m=free" target="_blank" class="text-[#2F6BE8] underline">Font Awesome</a> free solid-style classes, e.g. <code>fa-book-medical</code>.</p>
+      </div>
+
+      <button id="publishBtn" class="w-full bg-[#2F6BE8] hover:bg-[#154982] text-white font-bold py-3.5 rounded-xl transition-all shadow-lg disabled:opacity-50 disabled:cursor-not-allowed">
+        Publish — Make This the Live Page
+      </button>
+      <p id="publishStatus" class="text-sm text-center"></p>
+    </div>
+
+    <!-- ── Right: live preview ────────────────────────────────── -->
+    <div class="lg:sticky lg:top-6 h-fit">
+      <label class="field-label mb-2">Live preview</label>
+      <div class="border border-gray-200 rounded-2xl overflow-hidden bg-white shadow-sm" style="height: 80vh;">
+        <iframe id="previewFrame" class="w-full h-full" title="Preview"></iframe>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+// ── Passphrase gate ──────────────────────────────────────────────
+// NOTE: this only hides the UI. The real protection is server-side —
+// the publish function checks the same passphrase against an env var
+// before it commits anything. Don't rely on this screen alone.
+document.getElementById('passSubmit').onclick = () => {
+  const val = document.getElementById('passInput').value;
+  if (!val) return;
+  sessionStorage.setItem('webinarAdminPass', val);
+  document.getElementById('gate').classList.add('hidden');
+  document.getElementById('app').classList.remove('hidden');
+};
+(function checkExistingPass() {
+  if (sessionStorage.getItem('webinarAdminPass')) {
+    document.getElementById('gate').classList.add('hidden');
+    document.getElementById('app').classList.remove('hidden');
+  }
+})();
+
+// ── Default card data (first-run placeholders) ──────────────────
+const DEFAULT_CARDS = [
+  { icon: 'fa-circle-question', title: '', body: '' },
+  { icon: 'fa-magnifying-glass', title: '', body: '' },
+  { icon: 'fa-scale-balanced', title: '', body: '' },
+  { icon: 'fa-chart-line', title: '', body: '' },
+  { icon: 'fa-file-circle-check', title: '', body: '' },
+  { icon: 'fa-people-group', title: '', body: '' },
+];
+
+function renderCardFields(cards) {
+  const container = document.getElementById('cardsContainer');
+  container.innerHTML = '';
+  cards.forEach((card, i) => {
+    const row = document.createElement('div');
+    row.className = 'card-row grid grid-cols-[1fr_2fr_3fr] gap-2';
+    row.innerHTML = `
+      <input class="field-input card-icon" data-i="${i}" value="${escapeAttr(card.icon)}" placeholder="fa-icon-name">
+      <input class="field-input card-title" data-i="${i}" value="${escapeAttr(card.title)}" placeholder="Card title">
+      <input class="field-input card-body" data-i="${i}" value="${escapeAttr(card.body)}" placeholder="One sentence">
+    `;
+    container.appendChild(row);
+  });
+  container.querySelectorAll('input').forEach(el => el.addEventListener('input', updatePreview));
+}
+
+function escapeAttr(s) {
+  return String(s || '').replace(/"/g, '&quot;');
+}
+
+function getCardsFromForm() {
+  const icons = [...document.querySelectorAll('.card-icon')];
+  return icons.map((el, i) => ({
+    icon: el.value.trim() || 'fa-circle',
+    title: document.querySelectorAll('.card-title')[i].value.trim(),
+    body: document.querySelectorAll('.card-body')[i].value.trim(),
+  }));
+}
+
+renderCardFields(DEFAULT_CARDS);
+
+// ── Collect current form state ───────────────────────────────────
+function getFormData() {
+  const title = document.getElementById('f_title').value.trim();
+  const highlight = document.getElementById('f_highlight').value.trim();
+  let headline = title;
+  if (highlight && title.includes(highlight)) {
+    headline = title.replace(highlight, `**${highlight}**`);
+  }
+  return {
+    title,
+    headline,
+    subtitle: document.getElementById('f_subtitle').value.trim(),
+    dateDisplay: document.getElementById('f_dateDisplay').value.trim(),
+    dateShort: document.getElementById('f_dateShort').value.trim(),
+    timeDisplay: document.getElementById('f_timeDisplay').value.trim(),
+    platformDisplay: document.getElementById('f_platformDisplay').value.trim(),
+    speakerName: document.getElementById('f_speakerName').value.trim(),
+    speakerTitle: document.getElementById('f_speakerTitle').value.trim(),
+    formUrl: document.getElementById('f_formUrl').value.trim(),
+    cards: getCardsFromForm(),
+  };
+}
+
+function updatePreview() {
+  const data = getFormData();
+  const html = WebinarTemplate.generateWebinarHtml(data);
+  document.getElementById('previewFrame').srcdoc = html;
+}
+
+document.querySelectorAll('#f_title,#f_highlight,#f_subtitle,#f_dateDisplay,#f_dateShort,#f_timeDisplay,#f_platformDisplay,#f_speakerName,#f_speakerTitle,#f_formUrl')
+  .forEach(el => el.addEventListener('input', updatePreview));
+
+updatePreview();
+
+// ── Flyer upload → extract ───────────────────────────────────────
+document.getElementById('flyerInput').addEventListener('change', async (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
+  const statusEl = document.getElementById('extractStatus');
+  statusEl.textContent = 'Reading the flyer…';
+  statusEl.className = 'text-xs text-[#2F6BE8] mt-2';
+
+  const reader = new FileReader();
+  reader.onload = async () => {
+    const base64 = reader.result.split(',')[1];
+    try {
+      const res = await fetch('/.netlify/functions/webinar-extract', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ imageBase64: base64, mimeType: file.type }),
+      });
+      if (!res.ok) throw new Error(await res.text());
+      const data = await res.json();
+
+      document.getElementById('f_title').value = data.title || '';
+      document.getElementById('f_subtitle').value = data.subtitle || '';
+      document.getElementById('f_dateDisplay').value = data.dateDisplay || '';
+      document.getElementById('f_dateShort').value = data.dateShort || '';
+      document.getElementById('f_timeDisplay').value = data.timeDisplay || '';
+      document.getElementById('f_platformDisplay').value = data.platformDisplay || '';
+      document.getElementById('f_speakerName').value = data.speakerName || '';
+      document.getElementById('f_speakerTitle').value = data.speakerTitle || '';
+
+      // data.headline carries **highlight** — pull the highlighted part back out
+      // for the separate "highlight" field.
+      const match = (data.headline || '').match(/\*\*(.+?)\*\*/);
+      document.getElementById('f_highlight').value = match ? match[1] : '';
+
+      statusEl.textContent = 'Filled in from the flyer — review every field below before publishing.';
+      statusEl.className = 'text-xs text-green-600 mt-2 font-medium';
+      updatePreview();
+    } catch (err) {
+      statusEl.textContent = "Couldn't read the flyer automatically — fill in the fields by hand below.";
+      statusEl.className = 'text-xs text-red-500 mt-2';
+      console.error(err);
+    }
+  };
+  reader.readAsDataURL(file);
+});
+
+// ── Publish ───────────────────────────────────────────────────────
+document.getElementById('publishBtn').addEventListener('click', async () => {
+  const btn = document.getElementById('publishBtn');
+  const statusEl = document.getElementById('publishStatus');
+  const data = getFormData();
+
+  if (!data.title || !data.dateDisplay || !data.formUrl) {
+    statusEl.textContent = 'Please fill in at least the title, date, and registration form URL.';
+    statusEl.className = 'text-sm text-center text-red-500';
+    return;
+  }
+
+  btn.disabled = true;
+  btn.textContent = 'Publishing…';
+  statusEl.textContent = '';
+
+  try {
+    const res = await fetch('/.netlify/functions/webinar-publish', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Admin-Token': sessionStorage.getItem('webinarAdminPass') || '',
+      },
+      body: JSON.stringify(data),
+    });
+    if (!res.ok) {
+      const errText = await res.text();
+      throw new Error(errText);
+    }
+    statusEl.textContent = 'Published — the live page is updating now.';
+    statusEl.className = 'text-sm text-center text-green-600 font-semibold';
+    document.getElementById('statusBadge').textContent = 'Published ' + new Date().toLocaleString();
+    document.getElementById('statusBadge').className = 'text-xs font-semibold px-3 py-1.5 rounded-full bg-green-100 text-green-700';
+  } catch (err) {
+    statusEl.textContent = 'Publish failed: ' + err.message;
+    statusEl.className = 'text-sm text-center text-red-500';
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'Publish — Make This the Live Page';
+  }
+});
+</script>
+</body>
+</html>
